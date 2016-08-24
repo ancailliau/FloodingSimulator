@@ -1,0 +1,22 @@
+﻿declare goal
+  id acquired_radar_depth_accurate
+  name "Maintain [AcquiredRadarDepthAccurate]"
+  obstructedby acquired_depth_not_accurate
+end
+
+declare obstacle
+  id acquired_depth_not_accurate
+  name "Acquired Depth Not Accurate"
+  refinedby dusty_environment
+end
+
+declare obstacle
+  id dusty_environment
+  name "Dusty Environment"
+  formalspec sooner-or-later (always, for more than 4 seconds, dustyEnvironment())
+end
+
+declare predicate
+	id dustyEnvironment
+	name "DustyEnvironment"
+end

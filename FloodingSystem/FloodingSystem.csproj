@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{734044F5-E6B3-4BD6-847E-10E33E060B14}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>FloodingSystem</RootNamespace>
+    <AssemblyName>FloodingSystem</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.4.3.5\lib\net45\NLog.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="FloodingWarningSystem.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="LocalWarners\ILocalWarner.cs" />
+    <Compile Include="Sensors\ICamera.cs" />
+    <Compile Include="Sensors\IDepthSensor.cs" />
+    <Compile Include="Sensors\IUltrasoundSensor.cs" />
+    <Compile Include="Actuators\IGSMProvider.cs" />
+    <Compile Include="Estimators\Depth\IDepthEstimator.cs" />
+    <Compile Include="Estimators\Speed\ISpeedEstimator.cs" />
+    <Compile Include="LocalWarners\SMSWarner.cs" />
+    <Compile Include="LocalWarners\EmailWarner.cs" />
+    <Compile Include="LocalWarners\PhoneWarner.cs" />
+    <Compile Include="Actuators\IMailProvider.cs" />
+    <Compile Include="Estimators\Depth\RadarDepthEstimator.cs" />
+    <Compile Include="Estimators\Speed\UltrasoundSpeedEstimator.cs" />
+    <Compile Include="Estimators\Speed\CameraSpeedEstimator.cs" />
+    <Compile Include="Estimators\EstimatorFactory.cs" />
+    <Compile Include="Actuators\IActuatorFactory.cs" />
+    <Compile Include="Sensors\ISensorFactory.cs" />
+    <Compile Include="LocalWarners\WarnerFactory.cs" />
+    <Compile Include="Utils\CustomBitmap.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="LocalWarners\" />
+    <Folder Include="Sensors\" />
+    <Folder Include="Actuators\" />
+    <Folder Include="Estimators\" />
+    <Folder Include="Estimators\Depth\" />
+    <Folder Include="Estimators\Speed\" />
+    <Folder Include="Utils\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

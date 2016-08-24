@@ -1,0 +1,15 @@
+﻿MONDAY 20 JUNE:
+
+- Implement more obstacles
+
+TUESDAY 21 JUNE and WEDNESDAY 22 JUNE:
+
+- Plug monitored values into probability propagation
+- Select the best countermeasure
+- Deploy a countermeasure
+
+
+DONE:
+- Export data to CSV
+- Import CSV data within Excel, and produce graphs
+- Extend monitoring to support obstacle

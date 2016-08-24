@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{6A85B3F5-E8F4-4A44-8F36-A379C6C9D19D}</ProjectGuid>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>FloodingSimulator</RootNamespace>
+    <AssemblyName>FloodingSimulator</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>false</ExternalConsole>
+    <PlatformTarget>x86</PlatformTarget>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ExternalConsole>true</ExternalConsole>
+    <PlatformTarget>x86</PlatformTarget>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.4.3.5\lib\net45\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="MathNet.Numerics">
+      <HintPath>..\packages\MathNet.Numerics.3.11.1\lib\net40\MathNet.Numerics.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="MoreLinq">
+      <HintPath>..\packages\morelinq.1.4.0\lib\net35\MoreLinq.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Simulator\FloodingSimulator.cs" />
+    <Compile Include="Simulator\Sensors\DummyCamera.cs" />
+    <Compile Include="Simulator\Sensors\DummyRadarDepthSensor.cs" />
+    <Compile Include="Simulator\Sensors\DummyUltrasoundSensor.cs" />
+    <Compile Include="Simulator\Actuators\DummyGSMProvider.cs" />
+    <Compile Include="Simulator\Actuators\DummyMailProvider.cs" />
+    <Compile Include="Environment\Environment.cs" />
+    <Compile Include="Simulator\Actuators\DummyActuatorFactory.cs" />
+    <Compile Include="Simulator\Sensors\DummySensorFactory.cs" />
+    <Compile Include="Optimizer.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FloodingSystem\FloodingSystem.csproj">
+      <Project>{734044F5-E6B3-4BD6-847E-10E33E060B14}</Project>
+      <Name>FloodingSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Development\LtlSharp\LtlSharp\LtlSharp.csproj">
+      <Project>{AA561918-B98E-40DA-93B1-A6BFE524AF42}</Project>
+      <Name>LtlSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Hamm\OpenMapleSharp\OpenMapleSharp.csproj">
+      <Project>{000DFB47-DCB1-448D-8E68-1AC183CFB15C}</Project>
+      <Name>OpenMapleSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ProbabilisticSimulator\ProbabilisticSimulator.csproj">
+      <Project>{11FDFE6F-751F-4F7C-B6E6-92DE70B61D8C}</Project>
+      <Name>ProbabilisticSimulator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Simulator\Simulator.csproj">
+      <Project>{B452940F-0D2C-4DD6-A320-01063102B12F}</Project>
+      <Name>Simulator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Development\KAOSTools\MetaModel\MetaModel.csproj">
+      <Project>{BCF014E2-1425-4F2D-BDB1-693A1F6FABE2}</Project>
+      <Name>MetaModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Development\KAOSTools\Parsing\Parsing.csproj">
+      <Project>{52C948A2-30AD-40A7-89A3-9D66B2FCDD9F}</Project>
+      <Name>Parsing</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Development\KAOSTools\ExpertOpinion\ExpertOpinionSharp.csproj">
+      <Project>{17EE1289-7F54-404E-BD17-2FAB7D0C59C5}</Project>
+      <Name>ExpertOpinionSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Development\BDDSharp\BDDSharp\BDDSharp.csproj">
+      <Project>{0F303658-80AD-4637-B587-BD076A80DCF5}</Project>
+      <Name>BDDSharp</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\..\Development\KAOSTools\UncertaintySimulation\UncertaintySimulation.csproj">
+      <Project>{F37A9A4A-DE7F-4C0E-84A6-8D3EA29AFB4F}</Project>
+      <Name>UncertaintySimulation</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Model.kaos">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+    <None Include="packages.config" />
+    <None Include="NLog.xsd" />
+    <None Include="TODO.txt" />
+    <None Include="Model2.kaos">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Simulator\" />
+    <Folder Include="Simulator\Sensors\" />
+    <Folder Include="Simulator\Actuators\" />
+    <Folder Include="Environment\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="NLog.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+</Project>

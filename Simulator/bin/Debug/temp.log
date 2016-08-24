@@ -1,0 +1,180 @@
+Hello World!
+Initializing simulated components
+Running PumpController
+Normalized transitions: 1,0
+Order : {aboveLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+*** [03:36:49.162] aboveLow
+6/13/2016 3:36:49 PM [AboveLow]
+Normalized transitions: 1,0,0
+Order : {aboveHigh},{belowLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+*** [03:36:49.223] aboveHigh
+6/13/2016 3:36:49 PM [AboveHigh]
+6/13/2016 3:36:49 PM [TurnOn]
+Normalized transitions: 0.5,0.5
+Order : {aboveLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+Normalized transitions: 0.5,0.5
+Order : {aboveLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+Normalized transitions: 0.5,0.5
+Order : {aboveLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+Normalized transitions: 0.5,0.5
+Order : {aboveLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+Normalized transitions: 0.5,0.5
+Order : {aboveLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+*** [03:36:49.491] aboveLow
+6/13/2016 3:36:49 PM [AboveLow]
+Normalized transitions: 1,0,0
+Order : {aboveHigh},{belowLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+*** [03:36:49.541] aboveHigh
+6/13/2016 3:36:49 PM [AboveHigh]
+Normalized transitions: 0.5,0.5
+Order : {aboveLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+Normalized transitions: 0.5,0.5
+Order : {aboveLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+*** [03:36:49.642] aboveLow
+6/13/2016 3:36:49 PM [AboveLow]
+Normalized transitions: 1,0,0
+Order : {aboveHigh},{belowLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+*** [03:36:49.694] aboveHigh
+6/13/2016 3:36:49 PM [AboveHigh]
+Normalized transitions: 0.5,0.5
+Order : {aboveLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+*** [03:36:49.749] break
+6/13/2016 3:36:49 PM [Break]
+Normalized transitions: 0.5,0.5
+Order : {aboveLow},{}
+Normalized transitions: 0,1
+Order : {},{repair}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+*** [03:36:49.800] aboveLow
+6/13/2016 3:36:49 PM [AboveLow]
+*** [03:36:49.801] repair
+6/13/2016 3:36:49 PM [Repair]
+Normalized transitions: 1,0,0
+Order : {aboveHigh},{belowLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+*** [03:36:49.853] aboveHigh
+6/13/2016 3:36:49 PM [AboveHigh]
+6/13/2016 3:36:49 PM [TurnOn]
+Normalized transitions: 0.5,0.5
+Order : {aboveLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+*** [03:36:49.906] aboveLow
+6/13/2016 3:36:49 PM [AboveLow]
+Normalized transitions: 1,0,0
+Order : {aboveHigh},{belowLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+*** [03:36:49.961] aboveHigh
+6/13/2016 3:36:49 PM [AboveHigh]
+*** [03:36:49.961] break
+6/13/2016 3:36:49 PM [Break]
+Normalized transitions: 0.5,0.5
+Order : {aboveLow},{}
+Normalized transitions: 0,1
+Order : {},{repair}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+*** [03:36:50.015] repair
+6/13/2016 3:36:50 PM [Repair]
+6/13/2016 3:36:50 PM [TurnOn]
+Normalized transitions: 0.5,0.5
+Order : {aboveLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+Normalized transitions: 0.5,0.5
+Order : {aboveLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+Normalized transitions: 0.5,0.5
+Order : {aboveLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+*** [03:36:50.171] aboveLow
+6/13/2016 3:36:50 PM [AboveLow]
+Normalized transitions: 1,0,0
+Order : {aboveHigh},{belowLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+*** [03:36:50.226] aboveHigh
+6/13/2016 3:36:50 PM [AboveHigh]
+Normalized transitions: 0.5,0.5
+Order : {aboveLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+*** [03:36:50.278] aboveLow
+6/13/2016 3:36:50 PM [AboveLow]
+Normalized transitions: 1,0,0
+Order : {aboveHigh},{belowLow},{}
+Normalized transitions: 0.9,0.1
+Order : {},{break}
+Normalized transitions: 1,0
+Order : {},{methaneAppears}
+*** [03:36:50.328] aboveHigh
+6/13/2016 3:36:50 PM [AboveHigh]

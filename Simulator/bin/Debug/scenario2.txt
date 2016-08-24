@@ -1,0 +1,15 @@
+tick
+tick
+aboveLow
+abobeHigh
+tick
+tick
+tick
+tick
+tick
+tick
+tick
+tick
+aboveLow
+belowLow
+tick

@@ -1,0 +1,157 @@
+//var model = new KAOSModel();
+			//var depthAcquired = new Predicate(model) { Identifier = "depth_acquired", Name = "DepthAcquired" };
+			//var speedAcquired = new Predicate(model) { Identifier = "speed_acquired", Name = "SpeedAcquired" };
+			//var depthCritical = new Predicate(model) { Identifier = "critical_depth", Name = "CriticalDepth" };
+			//var speedCritical = new Predicate(model) { Identifier = "critical_speed", Name = "CriticalSpeed" };
+			//var localsWarned  = new Predicate(model) { Identifier = "locals_warned",  Name = "LocalsWarned" };
+
+			//var depthAccurate = new Predicate(model) { Identifier = "depth_accurate", Name = "DepthAccurate" };
+			//var acquiredDepthCritical = new Predicate(model) { Identifier = "acquired_depth_critical", Name = "AcquiredDepthCritical" };
+
+			//var dusty = new Predicate(model) { Identifier = "dusty", Name = "DustyEnvironment" };
+			//var falseecho = new Predicate(model) { Identifier = "false_echo", Name = "FalseEcho" };
+			//var depthbroken = new Predicate(model) { Identifier = "depth_sensor_broken", Name = "DepthSensorBroken" };
+
+			//var goal_depth_acquired = new Goal(model) {
+			//	Identifier = "depth_acquired_every_5_seconds",
+			//	Name = "Achieve [DepthAcquiredEvery5Seconds]",
+			//	FormalSpec = new StrongImply {
+			//		Left = new Not(new PredicateReference {
+			//			Predicate = depthAcquired
+			//		}),
+			//		Right = new EventuallyBefore {
+			//			Enclosed = new PredicateReference {
+			//				Predicate = depthAcquired
+			//			},
+			//			TimeBound = new TimeBound {
+			//				Comparator = TimeComparator.less,
+			//				Bound = TimeSpan.FromSeconds(5)
+			//			}
+			//		}
+			//	}
+			//};
+
+
+			//// Depth is accurate within the 5 seconds it is acquired.
+			//// So depth measure can be corrected by the software 
+			//// to match the real depth.
+			//var goal_accurate_depth = new Goal(model) {
+			//	Identifier = "acquired_depth_accurate",
+			//	Name = "Maintain [AcquiredDepthAccurate]",
+			//	FormalSpec = new StrongImply {
+			//		Left = new PredicateReference {
+			//			Predicate = depthAcquired
+			//		},
+			//		Right = new KAOSTools.MetaModel.EventuallyBefore {
+			//			Enclosed = new PredicateReference {
+			//				Predicate = depthAccurate
+			//			},
+			//			TimeBound = new TimeBound {
+			//				Comparator = TimeComparator.greater,
+			//				Bound = TimeSpan.FromSeconds(3)
+			//			}
+			//		}
+			//	}
+			//};
+
+			//var goal_speed_acquired = new Goal(model) {
+			//	Identifier = "speed_acquired_every_5_seconds",
+			//	Name = "Achieve [SpeedAcquiredEvery5Seconds]",
+			//	FormalSpec = new StrongImply {
+			//		Left = new Not(new PredicateReference {
+			//			Predicate = speedAcquired
+			//		}),
+			//		Right = new EventuallyBefore {
+			//			Enclosed = new PredicateReference {
+			//				Predicate = speedAcquired
+			//			},
+			//			TimeBound = new TimeBound {
+			//				Comparator = TimeComparator.less,
+			//				Bound = TimeSpan.FromSeconds(5)
+			//			}
+			//		}
+			//	}
+			//};
+
+			//var goal_locals_warned = new Goal(model) {
+			//	Identifier = "locals_warned",
+			//	Name = "Achieve [LocalsWarnedWhenLevelsCritical]",
+			//	FormalSpec = new StrongImply {
+			//		Left = new And(
+			//			new And (
+			//				new And (new PredicateReference {
+			//					Predicate = depthAcquired
+			//				},
+			//				new PredicateReference {
+			//					Predicate = depthAccurate
+			//				}
+			//				        ),
+			//				new PredicateReference {
+			//					Predicate = acquiredDepthCritical
+			//				}
+			//			), 
+			//			new PredicateReference {
+			//			Predicate = speedCritical
+			//		}),
+			//		Right = new EventuallyBefore {
+			//			Enclosed = new PredicateReference {
+			//				Predicate = localsWarned
+			//			},
+			//			TimeBound = new TimeBound {
+			//				Comparator = TimeComparator.less,
+			//				Bound = TimeSpan.FromSeconds(5)
+			//			}
+			//		}
+			//	}
+			//};
+
+			//var obstacle_dusty = new Obstacle(model) {
+			//	Identifier = "dusty_environment",
+			//	Name = "Dusty Environment",
+			//	FormalSpec = new Eventually {
+			//		Enclosed = new And {
+			//			Left = new PredicateReference (depthAcquired),
+			//			Right = new KAOSTools.MetaModel.Globally {
+			//				Enclosed = new PredicateReference (dusty),
+			//				TimeBound = new TimeBound {
+			//					Comparator = TimeComparator.greater,
+			//					Bound = TimeSpan.FromSeconds (3)
+			//				}
+			//			}
+			//		}
+			//	}
+			//};
+
+			//var obstacle_false_echo = new Obstacle(model) {
+			//	Identifier = "false_echo",
+			//	Name = "False Echo",
+			//	FormalSpec = new Eventually {
+			//		Enclosed = new And {
+			//			Left = new PredicateReference(depthAcquired),
+			//			Right = new KAOSTools.MetaModel.Globally {
+			//				Enclosed = new PredicateReference(falseecho),
+			//				TimeBound = new TimeBound {
+			//					Comparator = TimeComparator.greater,
+			//					Bound = TimeSpan.FromSeconds(3)
+			//				}
+			//			}
+			//		}
+			//	}
+			//};
+
+			//var obstacle_broken = new Obstacle(model) {
+			//	Identifier = "depth_broken",
+			//	Name = "Depth Sensor Broken",
+			//	FormalSpec = new Eventually {
+			//		Enclosed = new And {
+			//			Left = new PredicateReference(depthAcquired),
+			//			Right = new KAOSTools.MetaModel.Globally {
+			//				Enclosed = new PredicateReference(depthbroken),
+			//				TimeBound = new TimeBound {
+			//					Comparator = TimeComparator.greater,
+			//					Bound = TimeSpan.FromSeconds(3)
+			//				}
+			//			}
+			//		}
+			//	}
+			//};

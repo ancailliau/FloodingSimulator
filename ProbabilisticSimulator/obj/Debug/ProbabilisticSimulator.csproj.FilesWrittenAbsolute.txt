@@ -1,0 +1,6 @@
+/Users/acailliau/Projects/MinePump/ProbabilisticSimulator/obj/Debug/.NETFramework,Version=v4.5.AssemblyAttribute.cs
+/Users/acailliau/Projects/MinePump/ProbabilisticSimulator/bin/Debug/ProbabilisticSimulator.dll.mdb
+/Users/acailliau/Projects/MinePump/ProbabilisticSimulator/bin/Debug/ProbabilisticSimulator.dll
+/Users/acailliau/Projects/MinePump/ProbabilisticSimulator/obj/Debug/ProbabilisticSimulator.dll
+/Users/acailliau/Projects/MinePump/ProbabilisticSimulator/obj/Debug/ProbabilisticSimulator.dll.mdb
+/Users/acailliau/Projects/MinePump/ProbabilisticSimulator/bin/Debug/NLog.dll

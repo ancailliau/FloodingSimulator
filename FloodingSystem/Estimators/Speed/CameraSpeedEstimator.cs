@@ -67,31 +67,31 @@ namespace FloodingSystem
 
 		double ComputePrediction ()
 		{
-			logger.Trace("Get camera images");
+			//logger.Trace("Get camera images");
 			var images = this.camera.GetImages (samplingNb, delay);
-			logger.Trace("Got "+images.Count()+" camera images");
+			//logger.Trace("Got "+images.Count()+" camera images");
 			var speeds = new List<double> ();
 
 			Point lastCoordinates = GetSquareCoordinate (images.First ());
-			logger.Info("Coordinates: {0},{1}", lastCoordinates.X, lastCoordinates.Y);
+			//logger.Info("Coordinates: {0},{1}", lastCoordinates.X, lastCoordinates.Y);
 			foreach (var i in images.Skip (1)) {
 				try {
 					var point = GetSquareCoordinate(i);
-					logger.Info("Coordinates: {0},{1}", point.X, point.Y);
+					//logger.Info("Coordinates: {0},{1}", point.X, point.Y);
 					var v = GetSpeed(lastCoordinates, point, delay);
 					speeds.Add(v);
-					logger.Trace("Computed speed: " + v);
+					//logger.Trace("Computed speed: " + v);
 
 					lastCoordinates = point;
 
 				} catch (NoSquareFound) {
-					logger.Trace("No Square Found");
+					//logger.Trace("No Square Found");
 					continue; 
 				}
 
 			}
 
-			logger.Trace("Average speed: " + speeds.Average ());
+			logger.Trace("Speed estimated by camera: " + speeds.Average ());
 
 			return speeds.Average ();
 		}

@@ -13,7 +13,7 @@
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
-    <OutputPath>bin\Debug</OutputPath>
+    <OutputPath>..\bin\Debug</OutputPath>
     <DefineConstants>DEBUG;</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
@@ -23,7 +23,7 @@
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
     <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
+    <OutputPath>..\bin\Release</OutputPath>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <ExternalConsole>true</ExternalConsole>
@@ -55,7 +55,6 @@
     <Compile Include="Environment\Environment.cs" />
     <Compile Include="Simulator\Actuators\DummyActuatorFactory.cs" />
     <Compile Include="Simulator\Sensors\DummySensorFactory.cs" />
-    <Compile Include="Optimizer.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FloodingSystem\FloodingSystem.csproj">
@@ -66,29 +65,9 @@
       <Project>{11FDFE6F-751F-4F7C-B6E6-92DE70B61D8C}</Project>
       <Name>ProbabilisticSimulator</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Simulator\Simulator.csproj">
-      <Project>{B452940F-0D2C-4DD6-A320-01063102B12F}</Project>
-      <Name>Simulator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Development\KAOSTools\MetaModel\MetaModel.csproj">
-      <Project>{BCF014E2-1425-4F2D-BDB1-693A1F6FABE2}</Project>
-      <Name>MetaModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\..\Development\KAOSTools\Parsing\Parsing.csproj">
-      <Project>{52C948A2-30AD-40A7-89A3-9D66B2FCDD9F}</Project>
-      <Name>Parsing</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Model.kaos">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
     <None Include="packages.config" />
-    <None Include="NLog.xsd" />
-    <None Include="TODO.txt" />
-    <None Include="Model2.kaos">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Simulator\" />

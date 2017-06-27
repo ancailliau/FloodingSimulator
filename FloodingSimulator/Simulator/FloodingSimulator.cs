@@ -3,12 +3,11 @@ using FloodingSystem;
 using ProbabilisticSimulator;
 using System.Collections.Generic;
 using System.Threading;
-using LtlSharp.Monitoring;
 using NLog;
 
 namespace FloodingSimulator
 {
-	public class FloodingSimulator
+    public class FloodingSimulator
 	{
 		Environment environment;
 
@@ -160,14 +159,15 @@ namespace FloodingSimulator
 			// UltrasoundSensorBroken
 
 			var ultrasoundNotBroken = new Func<double> (() => {
-				logger.Info("It's been: " + (DateTime.Now - startTime));
-				if (DateTime.Now - startTime < TimeSpan.FromMinutes(60)) {
-					logger.Info("Before");
-					return .35;
-				} else {
-					logger.Info("After");
-					return .15;
-				}
+                //logger.Info("It's been: " + (DateTime.Now - startTime));
+                //if (DateTime.Now - startTime < TimeSpan.FromMinutes(60)) {
+                //	logger.Info("Before");
+                //	return .35;
+                //} else {
+                //	logger.Info("After");
+                //	return .15;
+                //}
+                return .15;
 			});
 			var ultrasoundBroken = new Func<double>(() => 1 - ultrasoundNotBroken());
 
@@ -272,58 +272,58 @@ namespace FloodingSimulator
 			threadSimulation.Start();
 		}
 
-		internal MonitoredState GetMonitoredState()
-		{
-			var ms = new MonitoredState();
-			ms.Set("RadarDepthAcquired", controller.DepthAcquired);
-			ms.Set("SpeedAcquiredByUltraSound", controller.UltraSoundActive & controller.SpeedAcquired);
-			ms.Set("SpeedAcquiredByCamera", controller.CameraActive & controller.SpeedAcquired);
+		//internal MonitoredState GetMonitoredState()
+		//{
+		//	var ms = new MonitoredState();
+		//	ms.Set("RadarDepthAcquired", controller.DepthAcquired);
+		//	ms.Set("SpeedAcquiredByUltraSound", controller.UltraSoundActive & controller.SpeedAcquired);
+		//	ms.Set("SpeedAcquiredByCamera", controller.CameraActive & controller.SpeedAcquired);
 
-			ms.Set("LocalsWarnedByPhone", () => {
-				var lastWarn = warner.GetLastWarn();
-				if (lastWarn == null) {
-					return false;
-				} else {
-					return controller.Phone & (DateTime.Now - ((DateTime)lastWarn)).TotalSeconds < 5;
-				}
-			});
+		//	ms.Set("LocalsWarnedByPhone", () => {
+		//		var lastWarn = warner.GetLastWarn();
+		//		if (lastWarn == null) {
+		//			return false;
+		//		} else {
+		//			return controller.Phone & (DateTime.Now - ((DateTime)lastWarn)).TotalSeconds < 5;
+		//		}
+		//	});
 
-			ms.Set("LocalsWarnedBySMS", () => {
-				var lastWarn = warner.GetLastWarn();
-				if (lastWarn == null) {
-					return false;
-				} else {
-					return controller.SMS & (DateTime.Now - ((DateTime)lastWarn)).TotalSeconds < 5;
-				}
-			});
+		//	ms.Set("LocalsWarnedBySMS", () => {
+		//		var lastWarn = warner.GetLastWarn();
+		//		if (lastWarn == null) {
+		//			return false;
+		//		} else {
+		//			return controller.SMS & (DateTime.Now - ((DateTime)lastWarn)).TotalSeconds < 5;
+		//		}
+		//	});
 
-			ms.Set("LocalsWarnedByEmail", () => {
-				var lastWarn = warner.GetLastWarn();
-				if (lastWarn == null) {
-					return false;
-				} else {
-					return controller.Email & (DateTime.Now - ((DateTime)lastWarn)).TotalSeconds < 5;
-				}
-			});
+		//	ms.Set("LocalsWarnedByEmail", () => {
+		//		var lastWarn = warner.GetLastWarn();
+		//		if (lastWarn == null) {
+		//			return false;
+		//		} else {
+		//			return controller.Email & (DateTime.Now - ((DateTime)lastWarn)).TotalSeconds < 5;
+		//		}
+		//	});
 
-			ms.Set("DepthAccurate", Math.Abs (environment.RiverDepth - controller.MeasuredDepth) < 1);
-			ms.Set("SpeedAccurate", Math.Abs(environment.RiverSpeed - controller.MeasuredSpeed) < 1);
+		//	ms.Set("DepthAccurate", Math.Abs (environment.RiverDepth - controller.MeasuredDepth) < 1);
+		//	ms.Set("SpeedAccurate", Math.Abs(environment.RiverSpeed - controller.MeasuredSpeed) < 1);
 
-			ms.Set("AcquiredDepthCritical", controller.MeasuredDepth >= 5);
-			ms.Set("AcquiredSpeedCritical", controller.MeasuredSpeed >= 5);
+		//	ms.Set("AcquiredDepthCritical", controller.MeasuredDepth >= 5);
+		//	ms.Set("AcquiredSpeedCritical", controller.MeasuredSpeed >= 5);
 
-			ms.Set("DustyEnvironment", environment.Dust);
-			ms.Set("FalseEcho", environment.FalseEcho);
-			ms.Set("DepthSensorBroken", environment.DepthSensorBroken);
+		//	ms.Set("DustyEnvironment", environment.Dust);
+		//	ms.Set("FalseEcho", environment.FalseEcho);
+		//	ms.Set("DepthSensorBroken", environment.DepthSensorBroken);
 
-			ms.Set("UltrasoundSensorBroken", environment.UltrasoundSensorBroken);
-			ms.Set("UltrasoundDistortion", environment.UltrasoundDistortion);
-			ms.Set("NoisyImage", environment.NoisyImage);
-			ms.Set("GSMNetworkDown", environment.GSMNetworkDown);
-			ms.Set("VoiceNetworkOveloaded", environment.VoiceNetworkOveloaded);
+		//	ms.Set("UltrasoundSensorBroken", environment.UltrasoundSensorBroken);
+		//	ms.Set("UltrasoundDistortion", environment.UltrasoundDistortion);
+		//	ms.Set("NoisyImage", environment.NoisyImage);
+		//	ms.Set("GSMNetworkDown", environment.GSMNetworkDown);
+		//	ms.Set("VoiceNetworkOveloaded", environment.VoiceNetworkOveloaded);
 
-			return ms;
-		}
+		//	return ms;
+		//}
 	}
 }
 

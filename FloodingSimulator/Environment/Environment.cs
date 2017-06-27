@@ -64,7 +64,7 @@ namespace FloodingSimulator
 		/// <exception cref="T:System.NotImplementedException"></exception>
 		public void SetSpeed (RiverSpeedValues speed)
 		{
-			logger.Info("SetSpeed to {0}", Enum.GetName(typeof(RiverSpeedValues), speed));
+			// logger.Info("SetSpeed to {0}", Enum.GetName(typeof(RiverSpeedValues), speed));
 
 			if (speed == RiverSpeedValues.LOW) {
 				RiverSpeed = 2;
@@ -87,7 +87,7 @@ namespace FloodingSimulator
 		/// <exception cref="T:System.NotImplementedException"></exception>
 		public void SetDepth (double depth)
 		{
-			logger.Info("SetDepth to {0}", depth);
+			//logger.Info("SetDepth to {0}", depth);
 			RiverDepth = depth;
 		}
 	}

@@ -186,7 +186,6 @@ namespace FloodingSystem
 		/// <returns>The speed.</returns>
 		double AcquireSpeed ()
 		{
-			logger.Info ("Acquiring Speed");
 			var value = speedEstimator.GetSpeed();
 			if (value >= 0)
 				SpeedAcquired = true;
@@ -199,7 +198,6 @@ namespace FloodingSystem
 		/// <returns>The depth.</returns>
 		double AcquireDepth ()
 		{
-			logger.Info ("Acquiring Depth");
 			var value = depthEstimator.GetDepth();
 			if (value >= 0) 
 				DepthAcquired = true;

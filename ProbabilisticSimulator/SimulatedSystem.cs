@@ -100,7 +100,7 @@ namespace ProbabilisticSimulator
 				var transition = kv.Value;
 				foreach (var a in transition.actions) {
 					var now = DateTime.Now;
-					logger.Info ("Action {0} executed by simulated system", a);
+					//logger.Info ("Action {0} executed by simulated system", a);
 					actions [a] ();
 				}
 				markovChain.currentState = transition.target;

@@ -17,7 +17,7 @@ namespace FloodingSystem
 		public double GetSpeed ()
 		{
 			var v = sensor.GetUltrasoundSpeedData();
-			logger.Info ("Estimated speed by ultrasound: {0} m/s", v);
+			logger.Info ("Speed estimated by ultrasound: {0} m/s", v);
 			return v;
 		}
 	}

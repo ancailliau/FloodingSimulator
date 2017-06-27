@@ -16,7 +16,7 @@ namespace FloodingSystem
 		public double GetDepth ()
 		{
 			var value = sensor.GetDepth();
-			logger.Info("Measured depth: {0}", value);
+			logger.Info("Depth measured by radar: {0}", value);
 			return value;
 		}
 	}

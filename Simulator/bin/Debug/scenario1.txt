@@ -1,9 +1,0 @@
-tick
-tick
-methaneAppears
-aboveLow
-abobeHigh
-tick
-aboveLow
-belowLow
-tick

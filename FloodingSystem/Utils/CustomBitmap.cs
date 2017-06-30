@@ -17,14 +17,14 @@ namespace FloodingSystem
 		{
 			Width = width;
 			Height = height;
-			logger.Info("created");
+			//logger.Info("created");
 			image = new int[width, height];
 			for (int i = 0; i < width; i++) {
 				for (int j = 0; j < height; j++) {
 					image[i, j] = 0;
 				}
 			}
-			logger.Info("initiated");
+			//logger.Info("initiated");
 		}
 
 		public void SetPixel(int x, int y, int color)

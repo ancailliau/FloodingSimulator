@@ -5,7 +5,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FloodingSystem", "FloodingS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FloodingSimulator", "FloodingSimulator\FloodingSimulator.csproj", "{6A85B3F5-E8F4-4A44-8F36-A379C6C9D19D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProbabilisticSimulator", "ProbabilisticSimulator\ProbabilisticSimulator.csproj", "{11FDFE6F-751F-4F7C-B6E6-92DE70B61D8C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UCLouvain.EnvironmentSimulator", "ProbabilisticSimulator\UCLouvain.EnvironmentSimulator.csproj", "{11FDFE6F-751F-4F7C-B6E6-92DE70B61D8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

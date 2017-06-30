@@ -60,9 +60,11 @@ namespace FloodingSystem
 		{
 			var xspeed = (double) (b.X - a.X);
 			var yspeed = (double) (b.Y - a.Y);
-			logger.Info("Delta x : " + (xspeed / c.TotalSeconds));
-			logger.Info("Delta y : " + (yspeed / c.TotalSeconds));
-			return Math.Sqrt (xspeed * xspeed + yspeed * yspeed) / c.TotalSeconds;
+			//logger.Info("Delta x : " + (xspeed / c.TotalSeconds));
+			//logger.Info("Delta y : " + (yspeed / c.TotalSeconds));
+			double speed = Math.Sqrt(xspeed * xspeed + yspeed * yspeed) / c.TotalSeconds;
+            //logger.Info("Speed acquired by camera: " + speed);
+            return speed;
 		}
 
 		double ComputePrediction ()

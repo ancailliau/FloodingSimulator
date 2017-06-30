@@ -1,16 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace ProbabilisticSimulator
+namespace UCLouvain.EnvironmentSimulator
 {
-	public class SimulatedSubsystem
+	public class SimulatedSubenvironment
 	{
 		public int id;
 		public Dictionary<State, TransitionList> transitions;
 		public Dictionary<string, State> states;
 		public State currentState;
 
-		public SimulatedSubsystem(int id)
+		public SimulatedSubenvironment(int id)
 		{
 			this.id = id;
 			transitions = new Dictionary<State, TransitionList>();

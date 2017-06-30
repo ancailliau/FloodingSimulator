@@ -1,6 +1,6 @@
 ﻿using System;
 using FloodingSystem;
-using ProbabilisticSimulator;
+using UCLouvain.EnvironmentSimulator;
 using System.Collections.Generic;
 using System.Threading;
 using NLog;
@@ -24,7 +24,7 @@ namespace FloodingSimulator
 
 		DummyRadarDepthSensor depthSensor;
 
-		SimulatedSystem system;
+		SimulatedEnvironment system;
 		Dictionary<string, Action> actions;
 
 		private static Logger logger = LogManager.GetCurrentClassLogger();
@@ -84,12 +84,38 @@ namespace FloodingSimulator
 			}
 		}
 
+        internal void Stop()
+        {
+            system.Stop();
+            controller.Stop();
+        }
+
+        Dictionary<string, double> probability = new Dictionary<string, double>();
+        
+        public void SetProbability (string key, double value)
+        {
+            probability[key] = value;
+        }
+        
+        void SetDefaultProbability ()
+        {
+            probability["dustAppears"] = .3;
+            probability["dustLeaves"] = .45;
+            
+            probability["noisyImagesAppears"] = 0;
+            probability["noisyImagesLeaves"] = 1;
+            
+            probability["ultrasoundSensorBreak"] = .25;
+            probability["ultrasoundSensorRepair"] = .35;
+        }
+
 		void BuildSimulation()
 		{
+            SetDefaultProbability();
 			var startTime = DateTime.Now;
-			system = new SimulatedSystem();
+			system = new SimulatedEnvironment();
 
-			system.InitSubsystem(0);
+			system.InitSubenvironment(0);
 			system.AddState(0, "depthLow", true);
 			system.AddState(0, "depthMedium");
 			system.AddState(0, "depthHigh");
@@ -104,7 +130,7 @@ namespace FloodingSimulator
 			system.AddTransition(0, "depthHigh", "depthMedium", new string[] { "depthMedium" }, .3);
 			system.AddTransition(0, "depthHigh", "depthHigh", new string[] { }, .7);
 
-			system.InitSubsystem(1);
+			system.InitSubenvironment(1);
 			system.AddState(1, "speedLow", true);
 			system.AddState(1, "speedMedium");
 			system.AddState(1, "speedHigh");
@@ -125,18 +151,18 @@ namespace FloodingSimulator
 
 			//
 
-			system.InitSubsystem(2);
+			system.InitSubenvironment(2);
 			system.AddState(2, "notDusty", true);
 			system.AddState(2, "dusty");
 
-			system.AddTransition(2, "notDusty", "dusty", new string[] { "dustAppears" }, 0.3);
-			system.AddTransition(2, "notDusty", "notDusty", new string[] { }, 0.7);
-			system.AddTransition(2, "dusty", "notDusty", new string[] { "dustLeaves" }, 0.45);
-			system.AddTransition(2, "dusty", "dusty", new string[] { }, 0.55);
+			system.AddTransition(2, "notDusty", "dusty", new string[] { "dustAppears" }, () => probability["dustAppears"]);
+			system.AddTransition(2, "notDusty", "notDusty", new string[] { }, () => 1 - probability["dustAppears"]);
+			system.AddTransition(2, "dusty", "notDusty", new string[] { "dustLeaves" }, () => probability["dustLeaves"]);
+			system.AddTransition(2, "dusty", "dusty", new string[] { },  () => 1 - probability["dustLeaves"]);
 
 			//
 
-			system.InitSubsystem(3);
+			system.InitSubenvironment(3);
 			system.AddState(3, "noFalseEcho", true);
 			system.AddState(3, "falseEcho");
 
@@ -147,7 +173,7 @@ namespace FloodingSimulator
 
 			//
 
-			system.InitSubsystem(4);
+			system.InitSubenvironment(4);
 			system.AddState(4, "depthSensorWorking", true);
 			system.AddState(4, "depthSensorBroken");
 
@@ -158,32 +184,19 @@ namespace FloodingSimulator
 
 			// UltrasoundSensorBroken
 
-			var ultrasoundNotBroken = new Func<double> (() => {
-                //logger.Info("It's been: " + (DateTime.Now - startTime));
-                //if (DateTime.Now - startTime < TimeSpan.FromMinutes(60)) {
-                //	logger.Info("Before");
-                //	return .35;
-                //} else {
-                //	logger.Info("After");
-                //	return .15;
-                //}
-                return .15;
-			});
-			var ultrasoundBroken = new Func<double>(() => 1 - ultrasoundNotBroken());
-
 			int id = 5;
-			system.InitSubsystem(id);
+			system.InitSubenvironment(id);
 			system.AddState(id, "UltrasoundSensorNotBroken", true);
 			system.AddState(id, "UltrasoundSensorBroken");
-			system.AddTransition(id, "UltrasoundSensorNotBroken", "UltrasoundSensorBroken", new string[] { "ultrasoundSensorBreak" }, .25);
-			system.AddTransition(id, "UltrasoundSensorNotBroken", "UltrasoundSensorNotBroken", new string[] { }, 0.75);
-			system.AddTransition(id, "UltrasoundSensorBroken", "UltrasoundSensorNotBroken", new string[] { "ultrasoundSensorRepair" }, ultrasoundNotBroken);
-			system.AddTransition(id, "UltrasoundSensorBroken", "UltrasoundSensorBroken", new string[] { }, ultrasoundBroken);
+			system.AddTransition(id, "UltrasoundSensorNotBroken", "UltrasoundSensorBroken", new string[] { "ultrasoundSensorBreak" }, () => probability["ultrasoundSensorBreak"]);
+			system.AddTransition(id, "UltrasoundSensorNotBroken", "UltrasoundSensorNotBroken", new string[] { }, () => 1 - probability["ultrasoundSensorBreak"]);
+			system.AddTransition(id, "UltrasoundSensorBroken", "UltrasoundSensorNotBroken", new string[] { "ultrasoundSensorRepair" }, () => probability["ultrasoundSensorRepair"]);
+			system.AddTransition(id, "UltrasoundSensorBroken", "UltrasoundSensorBroken", new string[] { }, () => 1 - probability["ultrasoundSensorRepair"]);
 
 			// UltrasoundDistortion
 
 			id++;
-			system.InitSubsystem(id);
+			system.InitSubenvironment(id);
 			system.AddState(id, "NoUltrasoundDistortion", true);
 			system.AddState(id, "UltrasoundDistortion");
 			system.AddTransition(id, "NoUltrasoundDistortion", "UltrasoundDistortion", new string[] { "ultrasoundDistortionAppears" }, 0.25);
@@ -194,18 +207,18 @@ namespace FloodingSimulator
 			// NoisyImage
 
 			id++;
-			system.InitSubsystem(id);
+			system.InitSubenvironment(id);
 			system.AddState(id, "NoiselessImage", true);
 			system.AddState(id, "NoisyImage");
-			system.AddTransition(id, "NoiselessImage", "NoisyImage", new string[] { "noisyImagesAppears" }, 0.1);
-			system.AddTransition(id, "NoiselessImage", "NoiselessImage", new string[] { }, 0.9);
-			system.AddTransition(id, "NoisyImage", "NoiselessImage", new string[] { "noisyImagesLeaves" }, 0.6);
-			system.AddTransition(id, "NoisyImage", "NoisyImage", new string[] { }, 0.4);
+			system.AddTransition(id, "NoiselessImage", "NoisyImage", new string[] { "noisyImagesAppears" }, () => probability["noisyImagesAppears"]);
+			system.AddTransition(id, "NoiselessImage", "NoiselessImage", new string[] { }, () => 1 - probability["noisyImagesAppears"]);
+			system.AddTransition(id, "NoisyImage", "NoiselessImage", new string[] { "noisyImagesLeaves" },  () => probability["noisyImagesLeaves"]);
+			system.AddTransition(id, "NoisyImage", "NoisyImage", new string[] { },  () => 1 - probability["noisyImagesLeaves"]);
 
 			// GSMNetworkDown
 
 			id++;
-			system.InitSubsystem(id);
+			system.InitSubenvironment(id);
 			system.AddState(id, "GSMNetworkUp", true);
 			system.AddState(id, "GSMNetworkDown");
 			system.AddTransition(id, "GSMNetworkUp", "GSMNetworkDown", new string[] { "gsmDown" }, 0.1);
@@ -216,7 +229,7 @@ namespace FloodingSimulator
 			// VoiceNetworkOveloaded
 
 			id++;
-			system.InitSubsystem(id);
+			system.InitSubenvironment(id);
 			system.AddState(id, "VoiceNetworkWorking", true);
 			system.AddState(id, "VoiceNetworkOveloaded");
 			system.AddTransition(id, "VoiceNetworkWorking", "VoiceNetworkOveloaded", new string[] { "voiceNetworkOverload" }, 0.1);
@@ -272,58 +285,51 @@ namespace FloodingSimulator
 			threadSimulation.Start();
 		}
 
-		//internal MonitoredState GetMonitoredState()
-		//{
-		//	var ms = new MonitoredState();
-		//	ms.Set("RadarDepthAcquired", controller.DepthAcquired);
-		//	ms.Set("SpeedAcquiredByUltraSound", controller.UltraSoundActive & controller.SpeedAcquired);
-		//	ms.Set("SpeedAcquiredByCamera", controller.CameraActive & controller.SpeedAcquired);
+		internal Dictionary<string, bool> GetMonitoredState()
+		{
+			var ms = new Dictionary<string, bool>();
+			ms.Add("radarDepthAcquired", controller.DepthAcquired);
+			ms.Add("speedAcquiredByUltraSound", controller.UltraSoundActive & controller.SpeedAcquired);
+			ms.Add("speedAcquiredByCamera", controller.CameraActive & controller.SpeedAcquired);
 
-		//	ms.Set("LocalsWarnedByPhone", () => {
-		//		var lastWarn = warner.GetLastWarn();
-		//		if (lastWarn == null) {
-		//			return false;
-		//		} else {
-		//			return controller.Phone & (DateTime.Now - ((DateTime)lastWarn)).TotalSeconds < 5;
-		//		}
-		//	});
+			
+			var lastWarn = warner.GetLastWarn();
+			if (lastWarn == null) {
+				ms.Add("localsWarnedByPhone", false);
+			} else {
+                ms.Add("localsWarnedByPhone", controller.Phone & (DateTime.Now - ((DateTime)lastWarn)).TotalSeconds < 5);
+			}
 
-		//	ms.Set("LocalsWarnedBySMS", () => {
-		//		var lastWarn = warner.GetLastWarn();
-		//		if (lastWarn == null) {
-		//			return false;
-		//		} else {
-		//			return controller.SMS & (DateTime.Now - ((DateTime)lastWarn)).TotalSeconds < 5;
-		//		}
-		//	});
+			if (lastWarn == null) {
+				ms.Add("localsWarnedBySMS", false);
+			} else {
+				ms.Add("localsWarnedBySMS", controller.SMS & (DateTime.Now - ((DateTime)lastWarn)).TotalSeconds < 5);
+			}
 
-		//	ms.Set("LocalsWarnedByEmail", () => {
-		//		var lastWarn = warner.GetLastWarn();
-		//		if (lastWarn == null) {
-		//			return false;
-		//		} else {
-		//			return controller.Email & (DateTime.Now - ((DateTime)lastWarn)).TotalSeconds < 5;
-		//		}
-		//	});
+            if (lastWarn == null) {
+                ms.Add("localsWarnedByEmail", false);
+            } else {
+                ms.Add("localsWarnedByEmail", controller.Email & (DateTime.Now - ((DateTime)lastWarn)).TotalSeconds < 5);
+            }
 
-		//	ms.Set("DepthAccurate", Math.Abs (environment.RiverDepth - controller.MeasuredDepth) < 1);
-		//	ms.Set("SpeedAccurate", Math.Abs(environment.RiverSpeed - controller.MeasuredSpeed) < 1);
+			ms.Add("depthAccurate", Math.Abs (environment.RiverDepth - controller.MeasuredDepth) < 1);
+			ms.Add("speedAccurate", Math.Abs(environment.RiverSpeed - controller.MeasuredSpeed) < 1);
 
-		//	ms.Set("AcquiredDepthCritical", controller.MeasuredDepth >= 5);
-		//	ms.Set("AcquiredSpeedCritical", controller.MeasuredSpeed >= 5);
+			ms.Add("acquiredDepthCritical", controller.MeasuredDepth >= 5);
+			ms.Add("acquiredSpeedCritical", controller.MeasuredSpeed >= 5);
 
-		//	ms.Set("DustyEnvironment", environment.Dust);
-		//	ms.Set("FalseEcho", environment.FalseEcho);
-		//	ms.Set("DepthSensorBroken", environment.DepthSensorBroken);
+			ms.Add("dustyEnvironment", environment.Dust);
+			ms.Add("falseEcho", environment.FalseEcho);
+			ms.Add("radarDepthSensorBroken", environment.DepthSensorBroken);
 
-		//	ms.Set("UltrasoundSensorBroken", environment.UltrasoundSensorBroken);
-		//	ms.Set("UltrasoundDistortion", environment.UltrasoundDistortion);
-		//	ms.Set("NoisyImage", environment.NoisyImage);
-		//	ms.Set("GSMNetworkDown", environment.GSMNetworkDown);
-		//	ms.Set("VoiceNetworkOveloaded", environment.VoiceNetworkOveloaded);
+			ms.Add("ultrasoundSensorBroken", environment.UltrasoundSensorBroken);
+			ms.Add("ultrasoundDistortion", environment.UltrasoundDistortion);
+			ms.Add("noisyImage", environment.NoisyImage);
+			ms.Add("gsmNetworkDown", environment.GSMNetworkDown);
+			ms.Add("voiceNetworkOverloaded", environment.VoiceNetworkOveloaded);
 
-		//	return ms;
-		//}
+			return ms;
+		}
 	}
 }
 

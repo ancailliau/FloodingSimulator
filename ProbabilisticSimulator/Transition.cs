@@ -1,5 +1,5 @@
 ﻿using System;
-namespace ProbabilisticSimulator
+namespace UCLouvain.EnvironmentSimulator
 {
 	public class Transition
 	{

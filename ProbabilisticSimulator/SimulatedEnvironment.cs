@@ -4,11 +4,11 @@ using System.Linq;
 using System.Threading;
 using NLog;
 
-namespace ProbabilisticSimulator
+namespace UCLouvain.EnvironmentSimulator
 {
-	public class SimulatedSystem
+	public class SimulatedEnvironment
 	{
-		Dictionary<int, SimulatedSubsystem> markovChains;
+		Dictionary<int, SimulatedSubenvironment> markovChains;
 		static Logger logger = LogManager.GetCurrentClassLogger();
 
 		public bool Running
@@ -19,15 +19,15 @@ namespace ProbabilisticSimulator
 
 		Random r;
 
-		public SimulatedSystem ()
+		public SimulatedEnvironment ()
 		{
-			markovChains = new Dictionary<int, SimulatedSubsystem> ();
+			markovChains = new Dictionary<int, SimulatedSubenvironment> ();
 			r = new Random();
 		}
 
-		public void InitSubsystem (int mc)
+		public void InitSubenvironment (int mc)
 		{
-			markovChains.Add (mc, new SimulatedSubsystem (mc));
+			markovChains.Add (mc, new SimulatedSubenvironment (mc));
 		}
 
 		public void AddState (int mc, string id)
@@ -79,7 +79,7 @@ namespace ProbabilisticSimulator
 		public void Step (Dictionary<string, Action> actions)
 		{
 			// First, pick all the transition that will be fired
-			var transitionsToFire = new Dictionary<SimulatedSubsystem, Transition> ();
+			var transitionsToFire = new Dictionary<SimulatedSubenvironment, Transition> ();
 			foreach (var markovChain in markovChains.Values) {
 				var outgoing = markovChain.transitions [markovChain.currentState];
 				var transition = outgoing.PickTransition (r);

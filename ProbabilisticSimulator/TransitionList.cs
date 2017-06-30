@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace ProbabilisticSimulator
+namespace UCLouvain.EnvironmentSimulator
 {
 	public class TransitionList
 	{

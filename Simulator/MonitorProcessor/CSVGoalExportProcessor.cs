@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO;
 using System.Text;
-using KAOSTools.MetaModel;
+using UCLouvain.KAOSTools.MetaModel;
 using System.Linq;
 using MoreLinq;
 using System.Collections.Generic;

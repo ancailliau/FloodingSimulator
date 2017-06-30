@@ -7,7 +7,7 @@ using LtlSharp;
 using LtlSharp.Monitoring;
 
 using MoreLinq;
-using KAOSTools.MetaModel;
+using UCLouvain.KAOSTools.MetaModel;
 using NLog;
 using System.Diagnostics;
 

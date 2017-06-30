@@ -148,7 +148,7 @@ namespace FloodingSystem
 		/// </summary>
 		public void Run ()
 		{
-			while (true) {
+			while (!stop) {
 				
 				MeasuredDepth = AcquireDepth ();
 				MeasuredSpeed = AcquireSpeed ();
@@ -179,6 +179,13 @@ namespace FloodingSystem
 				SpeedAcquired = false;
 			}
 		}
+
+        bool stop = false;
+        
+        public void Stop()
+        {
+            stop = true;
+        }
 
 		/// <summary>
 		/// Acquires the speed.

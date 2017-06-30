@@ -1,0 +1,7 @@
+language: csharp
+sudo: false
+solution: FloodingSystem.sln
+install:
+  - nuget restore FloodingSystem.sln
+script:
+  - xbuild /p:Configuration=Debug FloodingSystem.sln

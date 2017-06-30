@@ -43,11 +43,11 @@
     <Reference Include="NLog">
       <HintPath>..\packages\NLog.4.4.11\lib\net45\NLog.dll</HintPath>
     </Reference>
-    <Reference Include="System.ValueTuple">
-      <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
-    </Reference>
     <Reference Include="MoreLinq">
       <HintPath>..\packages\morelinq.2.5.0\lib\net40\MoreLinq.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple">
+      <HintPath>..\packages\System.ValueTuple.4.3.1\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -66,16 +66,6 @@
     <Compile Include="OptimizationClient.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ProbabilisticSimulator\UCLouvain.EnvironmentSimulator.csproj">
-      <Project>{11FDFE6F-751F-4F7C-B6E6-92DE70B61D8C}</Project>
-      <Name>UCLouvain.EnvironmentSimulator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\FloodingSystem\UCLouvain.FloodingSystem.csproj">
-      <Project>{734044F5-E6B3-4BD6-847E-10E33E060B14}</Project>
-      <Name>UCLouvain.FloodingSystem</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="packages.config" />
     <None Include="NLog.xsd" />
   </ItemGroup>
@@ -89,6 +79,16 @@
     <Content Include="NLog.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\UCLouvain.FloodingSystem\UCLouvain.FloodingSystem.csproj">
+      <Project>{734044F5-E6B3-4BD6-847E-10E33E060B14}</Project>
+      <Name>UCLouvain.FloodingSystem</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\UCLouvain.EnvironmentSimulator\UCLouvain.EnvironmentSimulator.csproj">
+      <Project>{11FDFE6F-751F-4F7C-B6E6-92DE70B61D8C}</Project>
+      <Name>UCLouvain.EnvironmentSimulator</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

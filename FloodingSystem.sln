@@ -1,11 +1,11 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UCLouvain.FloodingSystem", "FloodingSystem\UCLouvain.FloodingSystem.csproj", "{734044F5-E6B3-4BD6-847E-10E33E060B14}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UCLouvain.FloodingSystem", "UCLouvain.FloodingSystem\UCLouvain.FloodingSystem.csproj", "{734044F5-E6B3-4BD6-847E-10E33E060B14}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UCLouvain.FloodingSimulator", "FloodingSimulator\UCLouvain.FloodingSimulator.csproj", "{6A85B3F5-E8F4-4A44-8F36-A379C6C9D19D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UCLouvain.FloodingSimulator", "UCLouvain.FloodingSimulator\UCLouvain.FloodingSimulator.csproj", "{6A85B3F5-E8F4-4A44-8F36-A379C6C9D19D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UCLouvain.EnvironmentSimulator", "ProbabilisticSimulator\UCLouvain.EnvironmentSimulator.csproj", "{11FDFE6F-751F-4F7C-B6E6-92DE70B61D8C}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UCLouvain.EnvironmentSimulator", "UCLouvain.EnvironmentSimulator\UCLouvain.EnvironmentSimulator.csproj", "{11FDFE6F-751F-4F7C-B6E6-92DE70B61D8C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

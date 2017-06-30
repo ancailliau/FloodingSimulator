@@ -1,7 +1,7 @@
 ﻿using System;
 using NLog;
 
-namespace FloodingSystem
+namespace UCLouvain.FloodingSystem
 {
 	public class UltrasoundSpeedEstimator : ISpeedEstimator 
 	{

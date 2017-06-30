@@ -1,7 +1,7 @@
 ﻿using System;
 using NLog;
 
-namespace FloodingSimulator
+namespace UCLouvain.FloodingSimulator
 {
 	public static class RiverDepth
 	{

@@ -4,7 +4,7 @@ using System.Drawing;
 using System.Linq;
 using NLog;
 
-namespace FloodingSystem
+namespace UCLouvain.FloodingSystem
 {
 	public class CameraSpeedEstimator : ISpeedEstimator
 	{

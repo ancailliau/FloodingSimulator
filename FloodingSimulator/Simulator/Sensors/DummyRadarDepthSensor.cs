@@ -1,7 +1,8 @@
 ﻿using System;
-using FloodingSystem;
 using MathNet.Numerics.Distributions;
-namespace FloodingSimulator
+using UCLouvain.FloodingSystem;
+
+namespace UCLouvain.FloodingSimulator
 {
 	public class DummyRadarDepthSensor : IDepthSensor
 	{

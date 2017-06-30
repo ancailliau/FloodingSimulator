@@ -5,7 +5,7 @@ using RabbitMQ.Client;
 using System.Collections.Generic;
 using System.Web.Script.Serialization;
 
-namespace FloodingSimulator
+namespace UCLouvain.FloodingSimulator
 {
     public class MonitoringClient : IDisposable
     {

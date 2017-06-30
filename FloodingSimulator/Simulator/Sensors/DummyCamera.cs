@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Drawing;
-using FloodingSystem;
 using NLog;
+using UCLouvain.FloodingSystem;
 
-namespace FloodingSimulator
+namespace UCLouvain.FloodingSimulator
 {
 	public class DummyCamera : ICamera
 	{

@@ -1,11 +1,11 @@
-﻿using System;
-using FloodingSystem;
+﻿﻿﻿using System;
 using UCLouvain.EnvironmentSimulator;
+using UCLouvain.FloodingSystem;
 using System.Collections.Generic;
 using System.Threading;
 using NLog;
 
-namespace FloodingSimulator
+namespace UCLouvain.FloodingSimulator
 {
     public class FloodingSimulator
 	{
@@ -21,8 +21,6 @@ namespace FloodingSimulator
 		ILocalWarner warner;
 
 		FloodingWarningSystem controller;
-
-		DummyRadarDepthSensor depthSensor;
 
 		SimulatedEnvironment system;
 		Dictionary<string, Action> actions;

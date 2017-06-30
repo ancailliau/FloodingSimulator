@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using FloodingSystem;
+using UCLouvain.FloodingSystem;
 using System.Collections.Concurrent;
-namespace FloodingSimulator
+namespace UCLouvain.FloodingSimulator
 {
 	public class DummyGSMProvider : IGSMProvider
 	{

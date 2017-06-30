@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Drawing;
-namespace FloodingSystem
+namespace UCLouvain.FloodingSystem
 {
 	public interface ICamera
 	{

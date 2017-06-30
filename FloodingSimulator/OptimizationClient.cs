@@ -7,7 +7,7 @@ using System.Collections.Generic;
 using System.Web.Script.Serialization;
 using NLog;
 
-namespace FloodingSimulator
+namespace UCLouvain.FloodingSimulator
 {
     public class OptimizationClient : IDisposable
     {

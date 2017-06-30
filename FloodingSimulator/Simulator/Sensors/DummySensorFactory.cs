@@ -1,6 +1,6 @@
 ﻿using System;
-using FloodingSystem;
-namespace FloodingSimulator
+using UCLouvain.FloodingSystem;
+namespace UCLouvain.FloodingSimulator
 {
 	public class DummySensorFactory : ISensorFactory
 	{

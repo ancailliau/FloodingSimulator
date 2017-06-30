@@ -5,8 +5,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{734044F5-E6B3-4BD6-847E-10E33E060B14}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>FloodingSystem</RootNamespace>
-    <AssemblyName>FloodingSystem</AssemblyName>
+    <RootNamespace>UCLouvain.FloodingSystem</RootNamespace>
+    <AssemblyName>UCLouvain.FloodingSystem</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -30,7 +30,7 @@
     <Reference Include="System" />
     <Reference Include="System.Drawing" />
     <Reference Include="NLog">
-      <HintPath>..\packages\NLog.4.3.5\lib\net45\NLog.dll</HintPath>
+      <HintPath>..\packages\NLog.4.4.11\lib\net45\NLog.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

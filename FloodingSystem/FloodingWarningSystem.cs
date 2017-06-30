@@ -2,7 +2,7 @@
 using System;
 using NLog;
 
-namespace FloodingSystem
+namespace UCLouvain.FloodingSystem
 {
 	/// <summary>
 	/// Represents a flooding warning system based on measured depth and speed. 

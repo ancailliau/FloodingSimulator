@@ -3,7 +3,7 @@ using System.Drawing;
 using NLog;
 using System.Text;
 
-namespace FloodingSystem
+namespace UCLouvain.FloodingSystem
 {
 	public class CustomBitmap
 	{

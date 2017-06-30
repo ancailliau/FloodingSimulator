@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace FloodingSimulator
+namespace UCLouvain.FloodingSimulator
 {
     class ProgramFloodingSimulator
 	{

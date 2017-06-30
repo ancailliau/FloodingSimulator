@@ -1,5 +1,5 @@
 ﻿using System;
-namespace FloodingSystem
+namespace UCLouvain.FloodingSystem
 {
 	public interface ISensorFactory
 	{
